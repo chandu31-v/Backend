@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 const app = express()
 
 //middlewares
-
 //we use cors middleware - we get options with cors 1.to define source to allow - corse({origin:process.env.CORS_ORIGIN,credentials::true})
 app.use(cors())
 //cookie-parser is used to get cookie data from browser - it also gets options
@@ -24,7 +23,3 @@ app.use(express.static("public"))
 
 //app is exported and we can do app.listen in the file(as required) we want to start the server
 export {app}
-
-// app.listen(3000,()=>{
-//     console.log("conected on port 3000")
-// })
