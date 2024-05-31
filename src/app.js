@@ -21,5 +21,13 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.static("public"))
 
 
+//import routes
+import { router } from "./routes/user.routes";
+
+
+//routers declaration
+app.use("/user",router)  //you can access router by http:localhost:3000/user/register
+
+
 //app is exported and we can do app.listen in the file(as required) we want to start the server
 export {app}
