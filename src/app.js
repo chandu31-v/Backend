@@ -22,7 +22,7 @@ app.use(express.static("public"))
 
 
 //import routes
-import { router } from "./routes/user.routes";
+import { router } from "./routes/user.routes.js";
 
 
 //routers declaration
