@@ -15,9 +15,12 @@ const uploadOnCloudinary = async(filepath)=>{
             filepath,
             { resource_type:"auto" }
         )
-        console.log(response)
+        //fs.unlink(filepath)
+        return uploadResponse
     }catch(err){
         fs.unlink(filepath) //remove file uploaded to temp file
         console.log(err)
     }
 }
+
+export {uploadOnCloudinary}
