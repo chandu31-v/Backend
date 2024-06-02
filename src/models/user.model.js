@@ -4,13 +4,13 @@ import jwt from "jsonwebtoken"
 
 //user schema
 const userSchema = new mongoose.Schema({
-    Id:{
-        type:String,
-        required:true,
-        unique:true,
-        trim:true,
-        index:true // index is used for searching
-    },
+    // Id:{
+    //     type:String,
+    //     required:true,
+    //     unique:true,
+    //     trim:true,
+    //     index:true // index is used for searching
+    // },
     userName:{
         type:String,
         required:true,
@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
     },
     refreshToken:{
         type:String,
-        required:true,
+        //required:true,
         trim:true
     }
 
@@ -59,9 +59,9 @@ const userSchema = new mongoose.Schema({
 //using mongoose middleware "pre" to execute before a the action
 userSchema.pre("save",async function(next){
     //execute only when password is changed or password is 1st created
-    if(this.isModified("password"))
+    if(!this.isModified("password"))
         return next()
-    this.password = bcrypt.hash(this.password,10)
+    this.password = await bcrypt.hash(this.password,8)
     next()
 })
 
